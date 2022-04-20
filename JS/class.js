@@ -20,8 +20,18 @@ class Book {
   }
 }
 
-const book1 = new Book("All this JS", "Aayush");
-book1.info();
+// const book1 = new Book("All this JS", "Aayush");
+// book1.info();
 
-const book2 = new Book("Something", "Someone");
-book2.info();
+// const book2 = new Book("Something", "Someone");
+// book2.info();
+
+class Magazine extends Book {
+  constructor(edition) {
+    super("Magazine 1", "Aayush");
+    this.edition = edition;
+  }
+}
+
+const mag1 = new Magazine("01");
+console.log(mag1);

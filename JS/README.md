@@ -80,4 +80,36 @@ Q. What are 4 pillars of OOP?
 1. Polymorphism -> A single function which can behave differently based on different situations. (A same thing, different forms).
 2. Inheritance -> The approach with which the child class can access the parent's (grandparents, great grandparents) data members and member functions. But parent cannot access child's things.
 3. Abstraction -> It is the concept of hiding what is not required. Unnecessary information (data members and member functions).
-4. Encapsulation -> Combining / Bundling data members and member functions together in an object. The consumer does not need to care and combine everything by themselves. 
+4. Encapsulation -> Combining / Bundling data members and member functions together in an object. The consumer does not need to care and combine everything by themselves.
+
+
+
+call / apply / bind.
+Customizing what the this keyword will point to. 
+
+```
+function something(a, b, c) {
+	console.log(this, a, b, c);
+}
+const obj = {
+   fname: "Aayush",
+   lname: "Sinha"
+};
+/* something(10); */
+/* something.call(obj, 10, "aaa", false); */
+/* something.apply(obj, [10, "aaa", false]); */
+const fn = something.bind(obj);
+/* console.log(fn); */
+fn(10, "aaa", false);
+```
+
+Multiple Inheritance -> 1 child having more than 1 parent.
+Single Inheritance -> 1 child having only 1 parent.
+Multi Level Inheritance -> Decendand relations in inheritance.
+Hierarchical Inheritance -> 1 parent having more than 1 child.
+Hybrid Inheritance -> Combination of more than 1 from the above 4.
+
+Prototypal Inheritance (Prototype Chain) -> Inheritance using prototypes (before ES6 era).
+
+Magazine.prototype = Object.create(Book.prototype);
+Magazine.prototype.mag_fn = function() { ... };
