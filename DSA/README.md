@@ -149,13 +149,23 @@ Apr -22
 Q. We have an array. Find the index of the given element for 2 things
 First occurence, last occurence
 
--> [2, 4, 5, 1, 10, 8, 7, 3, 2, 9, 11]
+-> [2, 4, 5, 1, 2, 8, 7, 3, 2, 9, 11]
 -> 2
 -> [0, 8]
 
 ```
 function q1(arr, search_key) {
-  return [0, 0];
+  let locations = [];
+  arr.forEach((elem, idx) => {
+    if(elem == search_key) {
+      locations.push(idx);
+    }
+  })
+  return [locations[0], locations[locations.length - 1]];
 }
 
 ```
+
+Arr2 -> Given an array -> Tell the difference between maximum and minimum of that array.
+[2, 4, 9, 10, 1, 8, 12, 11, 7, 5, 8]
+-> 12 - 1 -> 11

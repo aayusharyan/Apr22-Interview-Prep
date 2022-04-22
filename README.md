@@ -32,3 +32,6 @@ const arr2 = arr.filter(function(element) {
 });
 
 arr2; //Only even numbers.
+
+Helpful resource: 
+https://pythontutor.com/
