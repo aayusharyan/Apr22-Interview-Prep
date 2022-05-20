@@ -10,6 +10,7 @@ function App() {
       <Conditional />
       <hr />
       <List />
+      <Button />
     </div>
   )
 }

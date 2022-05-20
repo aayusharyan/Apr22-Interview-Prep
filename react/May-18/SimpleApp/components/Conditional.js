@@ -18,6 +18,7 @@ const Conditional = () => {
           return (<FalseFlag />)
         }
       })()} */}
+      <Button content="Conditional Button"/>
       {flag ? <TrueFlag /> : <FalseFlag />}
       {/* <button style={{backgroundColor: "#FFFFFF", border: "2px solid grey", borderRadius: "5px"}}> */}
       <button className={btn_class}>
