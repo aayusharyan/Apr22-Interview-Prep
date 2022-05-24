@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+:root {
+  --dark-blue: #3D5A80;
+  --light-blue: #98C1D9;
+  --base: #E0FBFC;
+  --orange: #EE6C4D;
+  --darker-blue: #293241;
+}
+
+body, p, h1, h2, h3, h4, h5, h6 {
+  margin: 0px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+  background-color: var(--dark-blue);
+}
+
+.container {
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  min-width: 20rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+  /* transform: rotate(25deg); */
+  /* transform: scale(0.5); */
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.f-right {
+  float: right;
+}

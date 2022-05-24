@@ -4,9 +4,10 @@ const PasswordMatcher = () => {
 
   return(
     <div>
+      <p>{pass1 === pass2 ? "Passwords match" : "Passwords don't match"}</p>
       <input type="text" onKeyUp={e => setPass1(e.target.value)} />
       <input type="text" onKeyUp={e => setPass2(e.target.value)} />
-      <p>{pass1 === pass2 ? "Passwords match" : "Passwords don't match"}</p>
+      
     </div>
   );
 }
