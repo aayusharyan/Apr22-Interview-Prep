@@ -5,7 +5,7 @@ const Card = (props) => {
   return (
     <div className={`card ${props.isFlipped ? "flipped" : ""}`} onClick={flipCard}>
       <div className="content">
-        <h1>🚀</h1>
+        <h1>{props.emoji}</h1>
       </div>
     </div>
   )
