@@ -2,20 +2,20 @@ import Card from './Card';
 import {useEffect, useState} from 'react';
 import {pair_emojis, initRevealState} from '../Constants';
 import {randomizeArr} from '../HelperFunctions';
-
+import Confetti from 'react-confetti'
 
 
 const Grid = () => {
   const [flipped, setFlipped] = useState(initRevealState);
+  const [matched, setMatched] = useState(initRevealState);
   const [randomArr, setRandomArr] = useState(pair_emojis);
   const [timerID, setTimerID] = useState(0);
   const [score, setScore] = useState(0);
+  const [winning, setWinning] = useState(false);
 
   useEffect(() => {
     const random_arr = randomizeArr(pair_emojis);
     setRandomArr(random_arr);
-    console.log(random_arr);
-    console.log("Hello");
   }, []);
 
   
@@ -47,11 +47,30 @@ const Grid = () => {
       return previous;
     }, 0);
 
-    if(flipped_count_after == 2) {
-      const timer_id = setTimeout(() => {
-        setFlipped(initRevealState);
-      }, 2500);
-      setTimerID(timer_id);
+    if(flipped_count_after === 2) {
+      const selected_index = [];
+      flipped_copy.forEach((single_elem, idx) => {
+        if(single_elem) {
+          selected_index.push(idx);
+        }
+      });
+      if(randomArr[selected_index[0]] === randomArr[selected_index[1]]) {
+        const matched_copy = [...matched];
+        matched_copy[selected_index[0]] = true;
+        matched_copy[selected_index[1]] = true;
+
+        const allMatched = matched_copy.every((single_elem) => single_elem === true);
+        if(allMatched) {
+          setWinning(true);
+        }
+        setMatched(matched_copy);
+      } else {
+        const timer_id = setTimeout(() => {
+          setFlipped(initRevealState);
+        }, 2500);
+        setTimerID(timer_id);
+      }
+      
       setScore(score + 1);
     }
 
@@ -60,9 +79,11 @@ const Grid = () => {
   
   return (
     <>
+    {winning ? <Confetti /> : false}
     <div className="cards-container">
       {flipped.map((single_data, idx) => {
         const emoji = randomArr[idx];
+        const matchedState = matched[idx];
         return(
           <Card 
             key={idx} 
@@ -70,11 +91,13 @@ const Grid = () => {
             flip={toggleFlipped} 
             index={idx} 
             emoji={emoji} 
+            matchedState={matchedState}
           />
         )
       })}
     </div>
     <h3 className='scorecard'>Moves: {score}</h3>
+    {winning ? <h2>Congratulations</h2> : false}
     </>
   )
 }
