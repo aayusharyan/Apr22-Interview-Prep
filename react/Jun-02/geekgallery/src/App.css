@@ -1,4 +1,21 @@
-.modal-90w {
-  width: 90% !important;
+.modal-60w {
+  width: 60% !important;
   max-width: initial !important;
+}
+
+.my-masonry-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: -30px;
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 30px;
+  background-clip: padding-box;
+}
+
+.my-masonry-grid_column > div {
+  background: yellow;
+  margin-bottom: 30px;
 }

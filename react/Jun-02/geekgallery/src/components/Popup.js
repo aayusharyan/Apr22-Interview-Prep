@@ -10,20 +10,28 @@ const Popup = (props) => {
         backdrop="static"
         keyboard={false}
         centered
-        dialogClassName="modal-90w"
+        dialogClassName="modal-60w"
+        style={{backgroundColor: `${props.modalData?.color}77`}}
       >
         <Modal.Body>
           <Container>
             <Row>
               <Col md={6}>
-                <img style={{width: "100%"}} src='https://images.unsplash.com/photo-1648737154547-b0dfd281c51e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80' />
+                <img style={{maxWidth: "100%", maxHeight: "75vh", borderRadius: "5px"}} src={props.modalData?.urls?.full} />
               </Col>
               <Col md={6}>
-                <h2>Name: Blah Blah Blah Blah</h2>
-                <h3>Uploaded By: Bla Bhlah</h3>
-                <h5>Upload Date: Some Date, 1990</h5>
-                <br />
-                <p>Tag1, Tag2, Tag3, Tag4</p>
+                <h3>Uploaded By: {props.modalData?.user?.name} (@{props.modalData?.user?.id})</h3>
+                <h4>Upload Date: {props.modalData?.created_at}</h4>
+                <hr />
+                {props.modalData?.description ? (
+                  <>
+                  <h5>Description:</h5>
+                  <h6>{props.modalData?.description}</h6>
+                  <hr />
+                  </>
+                ) : false}
+                <h6>Width: {props.modalData?.width}</h6>
+                <h6>Height: {props.modalData?.height}</h6>
               </Col>
             </Row>
           </Container>
@@ -32,7 +40,7 @@ const Popup = (props) => {
           <Button variant="secondary" onClick={props.closeModal}>
             Close
           </Button>
-          <Button variant="primary">Download</Button>
+          <Button variant="primary" style={{backgroundColor: props.modalData?.color, borderColor: props.modalData?.color}} href={props.modalData?.links?.download} target="_blank">Download</Button>
         </Modal.Footer>
       </Modal>
     </>
