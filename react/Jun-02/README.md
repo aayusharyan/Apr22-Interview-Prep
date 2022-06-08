@@ -37,3 +37,7 @@ When you want to use it, process.env.<CONSTANT>
 
 
 -> When I like, it should should show red heart. (Otherwise hollow/transparent).
+
+
+http://localhost:3000/image/bBbv8slQi_4
+http://localhost:3000/image/XS_EaZL-TEE

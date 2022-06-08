@@ -4,7 +4,7 @@ const ConfigurationOptions = (props) => {
     <>
       <div>
         <label htmlFor="no_of_chars">Number of Characters</label>
-        <input type="number" id="no_of_chars" className="f-right" onKeyUp={e => props.setCharCount(e.target.value)} />
+        <input type="number" id="no_of_chars" className="f-right" onKeyUp={e => props.setCharCount(e.target.value)} onChange={e => props.setCharCount(e.target.value)} />
       </div>
 
       <div>

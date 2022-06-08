@@ -1,18 +1,22 @@
 import React, { useRef } from 'react'
 import {Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Header = (props) => {
   const inputRef = useRef();
+  const navigate = useNavigate();
 
   const formSubmitted = e => {
     e.preventDefault();
     props.setSearchKey(inputRef.current.value);
+    navigate("/");
   }
   return (
     <>
       <Navbar bg="light" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="./">GeekGallery</Navbar.Brand>
+          <Navbar.Brand ><Link to="/" style={{textDecoration: "none", color: "black"}}>GeekGallery</Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav

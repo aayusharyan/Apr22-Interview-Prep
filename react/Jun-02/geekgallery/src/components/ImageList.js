@@ -20,7 +20,7 @@ const ImageList = (props) => {
             columnClassName="my-masonry-grid_column"
           >
             {props.images.map((single_image, idx) => {
-              return <Col key={idx}><ImageCard click={props.cardClick} image_details={single_image} /></Col>
+              return <Col key={idx}><ImageCard image_details={single_image} /></Col>
             })}
           </Masonry>
         </Row>
