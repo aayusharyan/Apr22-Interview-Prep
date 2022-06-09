@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import {Navbar, Container, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap';
+import {Navbar, Container, Nav, Form, FormControl, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,8 +9,7 @@ const Header = (props) => {
 
   const formSubmitted = e => {
     e.preventDefault();
-    props.setSearchKey(inputRef.current.value);
-    navigate("/");
+    navigate(`/search?q=${inputRef.current.value}`);
   }
   return (
     <>

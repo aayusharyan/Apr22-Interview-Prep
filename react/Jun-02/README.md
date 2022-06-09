@@ -41,3 +41,5 @@ When you want to use it, process.env.<CONSTANT>
 
 http://localhost:3000/image/bBbv8slQi_4
 http://localhost:3000/image/XS_EaZL-TEE
+
+http://localhost:3000/search?q=tomato

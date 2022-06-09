@@ -19,7 +19,7 @@ const Detail = () => {
       <Container fluid style={{backgroundColor: `${imageData?.color}35`}} className="p-5">
         <Row>
           <Col md={6}>
-            <img style={{ maxWidth: "100%", maxHeight: "75vh", borderRadius: "5px" }} src={imageData?.urls?.full} />
+            <img style={{ maxWidth: "100%", maxHeight: "75vh", borderRadius: "5px" }} src={imageData?.urls?.full} alt="Detail" />
           </Col>
           <Col md={6}>
             <h3>Uploaded By: {imageData?.user?.name} (@{imageData?.user?.id})</h3>
