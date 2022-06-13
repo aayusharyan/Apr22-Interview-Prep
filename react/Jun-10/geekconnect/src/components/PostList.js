@@ -2,18 +2,16 @@ import React from 'react'
 import { Stack, Button } from '@mui/material'
 import PostCard from './PostCard';
 
-
-
-const PostList = () => {
-  const arr = [true, true, true, true, true, true];
+const PostList = (props) => {
+  console.log(props);
   return (
     <Stack spacing={2} mt={4} mb={4} alignItems="center">
-      {arr.map((_, idx) => {
+      {props.posts.map((singlePost, idx) => {
         return (
-          <PostCard key={idx} />
+          <PostCard key={idx} singlePost={singlePost} />
         )
       })}
-      <Button variant="text">Load More...</Button>
+      <Button variant="text" onClick={props.loadMore}>Load More...</Button>
     </Stack>
   )
 }
