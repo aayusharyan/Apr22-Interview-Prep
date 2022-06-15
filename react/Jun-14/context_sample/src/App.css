@@ -24,6 +24,11 @@
   color: white;
 }
 
+.light .App-header {
+  background-color: #DFDFDF;
+  color: black;
+}
+
 .App-link {
   color: #61dafb;
 }
