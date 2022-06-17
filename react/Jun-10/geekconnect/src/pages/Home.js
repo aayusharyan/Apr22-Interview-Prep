@@ -8,7 +8,7 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
 
-  const loadPage = async() => {
+  const loadMore = async() => {
     const response = await dummyapi.get(`/post?page=${pageNumber}`);  
     const postsArr = response?.data?.data ?? [];
     setPosts(oldPosts => [...oldPosts, ...postsArr]);
@@ -16,12 +16,13 @@ const Home = () => {
   }
 
   useEffect(() => {
-    loadPage();
+    (async() => {
+      const response = await dummyapi.get(`/post`);  
+      const data = response.data.data;
+      setPosts(data);
+      setPageNumber(1);
+    })();
   }, []);
-
-  const loadMore = () => {
-    loadPage();
-  }
   
   return (
     <>

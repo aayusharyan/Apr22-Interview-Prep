@@ -13,15 +13,22 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import CommentIcon from '@mui/icons-material/Comment';
 import { Chip, Stack } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export default function PostCard(props) {
   return (
     <Card sx={{ maxWidth: 520 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" src={props.singlePost?.owner?.picture} />
+          <Link to={`/profile/${props.singlePost?.owner?.id}`}>
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" src={props.singlePost?.owner?.picture} />
+          </Link>
         }
-        title={`${props.singlePost?.owner?.firstName} ${props.singlePost?.owner?.lastName}`}
+        title={
+          <Link to={`/profile/${props.singlePost?.owner?.id}`}>
+            {props.singlePost?.owner?.firstName} {props.singlePost?.owner?.lastName}
+          </Link>
+        }
         subheader={props.singlePost?.publishDate}
       />
       <CardMedia
@@ -37,7 +44,9 @@ export default function PostCard(props) {
         <Stack direction="row" spacing={1} mt={1}>
           {props.singlePost?.tags?.map((singleTag, idx) => {
             return (
-              <Chip label={`#${singleTag}`} variant="outlined" key={idx} size="small" style={{textTransform: "capitalize"}} onClick={() => {}} />
+              <Link key={idx} to={`/search?q=${singleTag}`}>
+                <Chip label={`#${singleTag}`} variant="outlined" size="small" style={{ textTransform: "capitalize" }} onClick={() => { }} />
+              </Link>
             );
           })}
         </Stack>
@@ -51,9 +60,11 @@ export default function PostCard(props) {
         <Typography variant="caption" display="block" gutterBottom>
           {props.singlePost?.likes} Likes
         </Typography>
-        <IconButton style={{ marginLeft: "auto" }}>
-          <CommentIcon />
-        </IconButton>
+        <Link to={`/post/:${props.singlePost?.id}`} style={{ marginLeft: "auto" }}>
+          <IconButton>
+            <CommentIcon />
+          </IconButton>
+        </Link>
       </CardActions>
     </Card>
   );

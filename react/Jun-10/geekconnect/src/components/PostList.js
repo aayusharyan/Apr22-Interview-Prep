@@ -3,7 +3,6 @@ import { Stack, Button } from '@mui/material'
 import PostCard from './PostCard';
 
 const PostList = (props) => {
-  console.log(props);
   return (
     <Stack spacing={2} mt={4} mb={4} alignItems="center">
       {props.posts.map((singlePost, idx) => {
