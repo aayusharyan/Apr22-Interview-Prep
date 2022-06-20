@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -60,7 +58,7 @@ export default function PostCard(props) {
         <Typography variant="caption" display="block" gutterBottom>
           {props.singlePost?.likes} Likes
         </Typography>
-        <Link to={`/post/:${props.singlePost?.id}`} style={{ marginLeft: "auto" }}>
+        <Link to={`/post/${props.singlePost?.id}`} style={{ marginLeft: "auto" }}>
           <IconButton>
             <CommentIcon />
           </IconButton>
