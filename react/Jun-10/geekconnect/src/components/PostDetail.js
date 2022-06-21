@@ -6,7 +6,7 @@ const PostDetail = ({ detail }) => {
     <>
       {detail !== undefined ? (
         <Paper elevation={5}>
-          <img src={detail?.image} alt="Post image" style={{ width: "100%", borderRadius: "5px", height: "100%" }} />
+          <img src={detail?.image} alt="Post" style={{ width: "100%", borderRadius: "5px", height: "100%" }} />
         </Paper>
       ) : (<LinearProgress />)}
     </>

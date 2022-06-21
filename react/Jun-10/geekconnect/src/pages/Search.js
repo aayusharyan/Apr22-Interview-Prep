@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { dummyapi } from '../util';
-import { Container } from '@mui/material';
+import { Container, LinearProgress } from '@mui/material';
 import PostList from '../components/PostList';
 import SearchBasicCard from '../components/SearchBasicCard';
 
@@ -23,10 +23,10 @@ const Search = () => {
         navigate('/');
       }
     })();
-  }, [searchParams]);
+  }, [searchParams, navigate]);
 
-  const loadMore = async() => {
-    const response = await dummyapi.get(`/tag/${searchParams.get('q')}/post?page=${pageNumber}`);  
+  const loadMore = async () => {
+    const response = await dummyapi.get(`/tag/${searchParams.get('q')}/post?page=${pageNumber}`);
     const postsArr = response?.data?.data ?? [];
     setPosts(oldPosts => [...oldPosts, ...postsArr]);
     setPageNumber(page => page + 1);
@@ -36,7 +36,11 @@ const Search = () => {
     <>
       <Container fixed>
         <SearchBasicCard query={searchParams.get('q')} />
-        <PostList posts={posts} loadMore={loadMore} />
+        {posts.length === 0 ? (
+          <LinearProgress style={{margin: "1.5rem 0.75rem 1.5rem 0.75rem"}} />
+        ) : (
+          <PostList posts={posts} loadMore={loadMore} />
+        )}
       </Container>
     </>
   )

@@ -12,8 +12,21 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import CommentIcon from '@mui/icons-material/Comment';
 import { Chip, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { likePost, dislikePost } from '../slice';
 
 export default function PostCard(props) {
+  const dispatch = useDispatch();
+  const isLiked = useSelector(state => state.likedPosts.some(e => e === props.singlePost?.id));
+  
+  const likeDislikePost = _ => {
+    if(isLiked) {
+      dispatch(dislikePost(props.singlePost?.id));
+    } else {
+      dispatch(likePost(props.singlePost?.id));
+    }
+  }
+
   return (
     <Card sx={{ maxWidth: 520 }}>
       <CardHeader
@@ -33,6 +46,7 @@ export default function PostCard(props) {
         component="img"
         image={props.singlePost?.image}
         alt="Paella dish"
+        onDoubleClick={likeDislikePost}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
@@ -52,11 +66,11 @@ export default function PostCard(props) {
 
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+        <IconButton aria-label="add to favorites" onClick={likeDislikePost}>
+          <FavoriteIcon style={{color: isLiked? "red": "inherit"}} />
         </IconButton>
         <Typography variant="caption" display="block" gutterBottom>
-          {props.singlePost?.likes} Likes
+          {props.singlePost?.likes + (isLiked ? 1 : 0)} Likes
         </Typography>
         <Link to={`/post/${props.singlePost?.id}`} style={{ marginLeft: "auto" }}>
           <IconButton>
