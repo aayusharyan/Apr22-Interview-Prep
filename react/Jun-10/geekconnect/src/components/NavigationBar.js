@@ -1,8 +1,4 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import { AppBar, Toolbar, Typography, Container } from '@mui/material';
 import Logo from '../logo.png';
 import { Link } from 'react-router-dom';
 import ThemeSwitcher from './ThemeSwitcher';
