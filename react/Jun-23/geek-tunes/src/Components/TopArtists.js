@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { napster, getArtistImage } from '../util';
 
 const TopArtists = () => {
-  const [artistList, setArtistList] = useState([]);
+  const [artistList, setArtistList] = useState(Array(20).fill(-1));
   useEffect(() => {
     (async _ => {
       const response = await napster.get('/artists/top');
@@ -15,12 +15,21 @@ const TopArtists = () => {
       <div class="flex flex-nowrap gap-3 mt-4 w-full overflow-x-auto">
         {artistList.map((singleArtist, idx) => {
           console.log(singleArtist)
-          return (
-            <div class="flex-none w-32 cursor-pointer" key={idx}>
-              <img class="border-4 border-transparent hover:border-blue-400" src={getArtistImage(singleArtist.id)} />
-              <p class="m-0 text-sm text-gray-600 pl-1">{singleArtist.name}</p>
-            </div>
-          );
+          if (singleArtist == -1) {
+            return (
+              <div class="flex-none w-32 animate-pulse rounded-lg" key={idx}>
+                <div class="bg-slate-700 h-20 w-28"></div>
+                <div class="h-2 bg-slate-700 rounded mt-2 w-20 mb-3"></div>
+              </div>
+            );
+          } else {
+            return (
+              <div class="flex-none w-32 cursor-pointer" key={idx}>
+                <img class="border-4 border-transparent hover:border-blue-400 rounded-lg" src={getArtistImage(singleArtist.id)} />
+                <p class="m-0 text-sm text-gray-600 pl-1">{singleArtist.name}</p>
+              </div>
+            );
+          }
         })}
       </div>
     </>
