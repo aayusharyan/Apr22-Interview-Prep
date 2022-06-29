@@ -4,6 +4,7 @@ import Player from "./Components/Player";
 import Home from "./Pages/Home";
 import Album from './Pages/Album';
 import NotFound from "./Pages/NotFound";
+import Artist from "./Pages/Artist";
 
 const App = _ => {
   return (
@@ -14,6 +15,7 @@ const App = _ => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/album/:albumId" element={<Album />} />
+            <Route path="/artist/:artistId" element={<Artist />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

@@ -19,13 +19,12 @@ const Player = () => {
 
   useEffect(() => {
     (async _ => {
-      if(trackId == "") {
+      if (trackId == "") {
         return false;
       }
       setIsPlaying(false);
       const response = await napster.get(`/tracks/${trackId}`);
       setTrack(response.data?.tracks[0]);
-      console.log(response.data?.tracks[0]);
       audioPlayer.current.src = response.data?.tracks[0]?.previewURL;
       setIsPlaying(true);
     })();
@@ -36,7 +35,7 @@ const Player = () => {
   }
 
   useEffect(() => {
-    if(isPlaying) {
+    if (isPlaying) {
       audioPlayer.current.play();
     } else {
       audioPlayer.current.pause();
@@ -65,7 +64,7 @@ const Player = () => {
 
   return (
     <>
-      <footer className=" fixed bottom-0 w-full">
+      <footer className={`fixed bottom-0 w-full ${trackId == "" ? "hidden" : ""}`}>
         <audio ref={audioPlayer} onTimeUpdate={playerCurrentTimeUpdate}>
         </audio>
         <input type="range" className="w-full -mb-4" value={currentTime} max={30} onChange={changeCurrentTime} />
@@ -79,7 +78,7 @@ const Player = () => {
               <div className="flex-1 flex items-center justify-center">
                 <button className='text-white z-50' onClick={togglePlayPause}>
                   {isPlaying ? (
-                    <FontAwesomeIcon  icon={faPause} />
+                    <FontAwesomeIcon icon={faPause} />
                   ) : (
                     <FontAwesomeIcon icon={faPlay} />
                   )}

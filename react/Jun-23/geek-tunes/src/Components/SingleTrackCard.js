@@ -4,8 +4,9 @@ import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { changePlayingTrack } from '../slice';
 import playingAnimation from '../playing-animation.gif';
+import AudioWave from './AudioWave';
 
-const SingleTrackCard = ({trackDetail, index}) => {
+const SingleTrackCard = ({ trackDetail, index }) => {
   const dispatch = useDispatch();
   const isPlaying = useSelector(state => state.playingTrack == trackDetail.id);
 
@@ -20,7 +21,10 @@ const SingleTrackCard = ({trackDetail, index}) => {
         <span>{index}.</span>
         <span className='ml-2'>{trackDetail.name}</span>
         {isPlaying ? (
-          <img src={playingAnimation} alt="Playing animation" className="h-12 ml-auto"/>
+          <div className='h-9 w-9 mr-2 ml-auto inline-block'>
+            <AudioWave />
+          </div>
+          // <img src={playingAnimation} alt="Playing animation" className=""/>
         ) : (
           <span className='text-4xl ml-auto justify-self-end -mt-1 cursor-pointer hover:text-blue-500'><FontAwesomeIcon icon={faCirclePlay} /></span>
         )}

@@ -11,9 +11,14 @@ const AlbumInfo = ({ albumDetails }) => {
 
         <div className='sm:inline-block sm:p-8'>
           <p className='text-3xl font-semibold -mt-7 sm:mt-0 text-center sm:text-left'>{albumDetails.name}</p>
-          <Link to={`/artist/${albumDetails.contributingArtists?.primaryArtist}`}>
-            <p className='text-lg underline hover:text-blue-700 font-semibold text-center sm:text-left'>{albumDetails.artistName}</p>
-          </Link>
+          {albumDetails.contributingArtists?.primaryArtist == "art.0" ? (
+            <p className='text-lg  font-semibold text-center sm:text-left'>{albumDetails.artistName}</p>
+          ) : (
+            <Link to={`/artist/${albumDetails.contributingArtists?.primaryArtist}`}>
+              <p className='text-lg underline hover:text-blue-700 font-semibold text-center sm:text-left'>{albumDetails.artistName}</p>
+            </Link>
+          )}
+
           <p className='text-center sm:text-left mt-4'>Released X years ago</p>
           <div className='flex justify-center sm:justify-start mt-4 gap-2'>{albumDetails.tags?.map((singleTag, idx) => {
             return (
