@@ -12,6 +12,7 @@ const TracksTab = () => {
   useEffect(() => {
     if(query == undefined || query == "") {
       setTrackList([]);
+      setShowMore(false);
       return;
     }
     setTrackList(Array(20).fill(-1));

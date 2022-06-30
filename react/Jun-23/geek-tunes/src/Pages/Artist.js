@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ArtistInfo from '../Components/ArtistInfo';
-import HorizontalAlbumList from '../Components/HorizontalAlbumList';
+import AlbumList from '../Components/AlbumList';
 import SongList from '../Components/SongList';
 import { napster } from '../util';
 
@@ -76,7 +76,7 @@ const Artist = () => {
       <ArtistInfo artistDetails={artistDetails} />
       <div className="container mx-auto px-4 relative">
         <p className='text-2xl font-semibold mt-4'>Top Albums</p>
-        <HorizontalAlbumList albumList={albumList} loadMore={loadMoreAlbums} showLoadMore={showLoadMoreAlbum} />
+        <AlbumList albumList={albumList} loadMore={loadMoreAlbums} showLoadMore={showLoadMoreAlbum} />
 
 
         <p className='text-2xl font-semibold mt-6 mb-3'>Top Tracks</p>

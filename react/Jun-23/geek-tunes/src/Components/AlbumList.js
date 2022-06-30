@@ -3,10 +3,10 @@ import { getAlbumImage } from '../util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleRight } from '@fortawesome/free-solid-svg-icons';
 
-const HorizontalAlbumList = ({ albumList, loadMore, showLoadMore }) => {
+const AlbumList = ({ albumList, loadMore, showLoadMore, horizontal=true }) => {
   return (
     <>
-      <div class="flex flex-nowrap gap-3 mt-4 w-full overflow-x-auto">
+      <div class={`flex gap-3 mt-4 w-full overflow-x-auto ${horizontal ? "flex-nowrap" : "flex-wrap justify-evenly"}`}>
         {albumList.map((singleAlbum, idx) => {
           if (singleAlbum == -1) {
             return (
@@ -36,4 +36,4 @@ const HorizontalAlbumList = ({ albumList, loadMore, showLoadMore }) => {
   )
 }
 
-export default HorizontalAlbumList
+export default AlbumList

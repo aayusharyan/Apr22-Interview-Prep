@@ -1,0 +1,39 @@
+.range {
+  -webkit-appearance: none;
+  background: linear-gradient(to right,
+    #cc181e 0%, #cc181e 50%,
+    #777 50%, #777 62.5%,
+    #444 62.5%, #444 100%);
+  cursor: pointer;
+  height: 3px;
+  margin: 0;
+  transition: 0.1s ease-in;
+  vertical-align: bottom;
+  width: 100%;
+}
+.wrap:hover .range,
+.wrap.hover .range { height: 8px; }
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #aeaeae;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 5px #eaeaea;
+  height: 0;
+  transition: 0.1s ease-in;
+  width: 0;
+}
+.wrap:hover .range::-webkit-slider-thumb,
+.wrap.hover .range::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+}
+
+.loaded .range,
+.loaded .range::-webkit-slider-thumb {
+  transition: 0.1s ease-in;
+}
+
+:focus {
+  outline: none;
+}

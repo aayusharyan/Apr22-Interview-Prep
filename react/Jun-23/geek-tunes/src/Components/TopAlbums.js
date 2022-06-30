@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { napster } from '../util';
 
-import HorizontalAlbumList from './HorizontalAlbumList';
+import AlbumList from './AlbumList';
 
 const TopAlbums = () => {
   const [albumList, setAlbumList] = useState(Array(20).fill(-1));
@@ -14,7 +14,7 @@ const TopAlbums = () => {
   return (
     <>
       <h3 class="text-2xl">Top Albums</h3>
-      <HorizontalAlbumList albumList={albumList} />
+      <AlbumList albumList={albumList} />
     </>
   )
 }

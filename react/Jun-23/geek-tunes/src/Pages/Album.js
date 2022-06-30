@@ -4,7 +4,7 @@ import { napster } from '../util';
 import { useNavigate } from 'react-router-dom';
 
 import AlbumInfo from '../Components/AlbumInfo';
-import HorizontalAlbumList from '../Components/HorizontalAlbumList';
+import AlbumList from '../Components/AlbumList';
 import SongList from '../Components/SongList';
 
 const Album = () => {
@@ -46,7 +46,7 @@ const Album = () => {
         {similarAlbumList.length > 1 ? (
           <>
             <p className='text-3xl mt-8'>Similar Albums</p>
-            <HorizontalAlbumList albumList={similarAlbumList} />
+            <AlbumList albumList={similarAlbumList} />
           </>
         ) : false}
 
