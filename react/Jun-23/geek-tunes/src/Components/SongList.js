@@ -2,7 +2,7 @@ import SingleTrackCard from '../Components/SingleTrackCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleRight } from '@fortawesome/free-solid-svg-icons';
 
-const SongList = ({ list, loadMore, showLoadMore }) => {
+const SongList = ({ list, loadMore, showLoadMore, showImages }) => {
   return (
     <>
       <div className='flex gap-4 flex-wrap justify-evenly items-stretch'>
@@ -19,7 +19,7 @@ const SongList = ({ list, loadMore, showLoadMore }) => {
             );
           } else {
             return (
-              <SingleTrackCard key={idx} index={idx + 1} trackDetail={singleTrack} />
+              <SingleTrackCard key={idx} index={idx + 1} trackDetail={singleTrack} showImage={showImages} />
             );
           }
         })}

@@ -38,7 +38,7 @@ const Artist = () => {
 
         const tracks_response = await napster.get(`artists/${artistId}/tracks/top?limit=20`);
         setTrackList(tracks_response.data.tracks);
-        setOffsetAlbum(20);
+        setOffsetTrack(20);
       } catch (e) {
         navigate('/404');
       }
