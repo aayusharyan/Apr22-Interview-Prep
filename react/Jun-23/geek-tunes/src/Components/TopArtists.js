@@ -12,7 +12,7 @@ const TopArtists = () => {
   }, []);
   return (
     <>
-      <h3 class="text-2xl">Top Artists</h3>
+      <h3 className="text-2xl">Top Artists</h3>
       <ArtistList list={artistList} />
     </>
   )

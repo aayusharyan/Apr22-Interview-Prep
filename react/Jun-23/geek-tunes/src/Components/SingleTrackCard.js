@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { changePlayingTrack } from '../slice';
-import playingAnimation from '../playing-animation.gif';
 import AudioWave from './AudioWave';
 import { getAlbumImage } from '../util';
+import Image from './Image';
 
 const SingleTrackCard = ({ trackDetail, index, showImage }) => {
   const dispatch = useDispatch();
-  const isPlaying = useSelector(state => state.playingTrack == trackDetail.id);
+  const isPlaying = useSelector(state => state.playingTrack === trackDetail.id);
 
 
   const playSong = () => {
@@ -18,9 +18,9 @@ const SingleTrackCard = ({ trackDetail, index, showImage }) => {
 
   return (
     <>
-      <div onClick={playSong} className={`w-full sm:w-5/12 md:w-1/4 lg:w-1/5 border-2 flex items-center hover:bg-blue-100 hover:border-blue-700 ${isPlaying ? "border-blue-700 bg-blue-100" : "border-gray-700"} rounded-md p-3 cursor-pointer`}>
+      <div key={index} onClick={playSong} className={`w-full sm:w-5/12 md:w-1/4 lg:w-1/5 border-2 flex items-center hover:bg-blue-100 hover:border-blue-700 ${isPlaying ? "border-blue-700 bg-blue-100" : "border-gray-700"} rounded-md p-3 cursor-pointer`}>
         {showImage ? (
-          <img src={getAlbumImage(trackDetail.albumId)} className="h-8" />
+          <Image src={getAlbumImage(trackDetail.albumId)} className="h-8 min-w-8" />
         ) : (
           <span>{index}.</span>
         )}

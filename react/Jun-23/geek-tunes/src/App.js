@@ -10,7 +10,7 @@ import Search from "./Pages/Search";
 const App = _ => {
   return (
     <>
-      <div class="bg-gray-200 min-h-screen pb-24">
+      <div className="bg-gray-200 min-h-screen pb-24">
         <NavigationBar />
         <div className="container mx-auto py-4">
           <Routes>

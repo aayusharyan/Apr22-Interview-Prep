@@ -1,7 +1,7 @@
 .range {
   -webkit-appearance: none;
   background: linear-gradient(to right,
-    #cc181e 0%, #cc181e 50%,
+    #1e3a8a 0%, #1e3a8a 50%,
     #777 50%, #777 62.5%,
     #444 62.5%, #444 100%);
   cursor: pointer;

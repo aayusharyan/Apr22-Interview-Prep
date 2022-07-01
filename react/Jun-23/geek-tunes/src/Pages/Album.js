@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { napster } from '../util';
 import { useNavigate } from 'react-router-dom';
-
 import AlbumInfo from '../Components/AlbumInfo';
 import AlbumList from '../Components/AlbumList';
 import SongList from '../Components/SongList';
@@ -20,7 +19,6 @@ const Album = () => {
       try {
         const response = await napster.get(`/albums/${albumId}`);
         setAlbumDetails(response.data?.albums[0]);
-        console.log(response.data.albums[0]);
 
         const tracks_response = await napster.get(`/albums/${albumId}/tracks`);
         setTrackList(tracks_response.data.tracks);
@@ -31,7 +29,7 @@ const Album = () => {
         navigate("/404");
       }
     })();
-  }, [albumId])
+  }, [albumId, navigate])
   return (
     <>
       <AlbumInfo albumDetails={albumDetails} />

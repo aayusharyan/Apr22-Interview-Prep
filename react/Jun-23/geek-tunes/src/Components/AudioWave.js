@@ -4,7 +4,7 @@ import '../AudioWave.css';
 const AudioWave = () => {
   return (
     <>
-      <div class="loader">
+      <div className="loader">
         <svg id="wave" className='dark' data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 38.05">
           <title>Audio Wave</title>
           <path id="Line_1" data-name="Line 1" d="M0.91,15L0.78,15A1,1,0,0,0,0,16v6a1,1,0,1,0,2,0s0,0,0,0V16a1,1,0,0,0-1-1H0.91Z" />

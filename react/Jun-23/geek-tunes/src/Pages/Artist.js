@@ -25,12 +25,11 @@ const Artist = () => {
       try {
         const response = await napster.get(`/artists/${artistId}`);
         const data = response.data.artists[0];
-        if (data == undefined) {
-          throw "Data is undefined";
+        if (data === undefined) {
+          throw new Error("Data is undefined");
         }
 
         setArtistDetails(data);
-        console.log(data);
 
         const album_response = await napster.get(`/artists/${artistId}/albums/top?limit=20`);
         setAlbumList(album_response.data.albums);
@@ -43,14 +42,14 @@ const Artist = () => {
         navigate('/404');
       }
     })();
-  }, [artistId]);
+  }, [artistId, navigate]);
 
   const loadMoreAlbums = () => {
     const oldState = albumList;
     setAlbumList(e => [...e, ...(Array(20).fill(-1))]);
     (async _ => {
       const album_response = await napster.get(`/artists/${artistId}/albums/top?limit=20&offset=${offsetAlbum}`);
-      if (album_response.data.albums.length == 0) {
+      if (album_response.data.albums.length === 0) {
         setShowLoadMoreAlbum(false);
       }
       setAlbumList([...oldState, ...album_response.data.albums]);
@@ -63,7 +62,7 @@ const Artist = () => {
     setTrackList(e => [...e, ...(Array(20).fill(-1))]);
     (async _ => {
       const tracks_response = await napster.get(`/artists/${artistId}/tracks/top?limit=20&offset=${offsetTrack}`);
-      if (tracks_response.data.tracks.length == 0) {
+      if (tracks_response.data.tracks.length === 0) {
         setShowLoadMoreTrack(false);
       }
       setTrackList([...oldState, ...tracks_response.data.tracks]);

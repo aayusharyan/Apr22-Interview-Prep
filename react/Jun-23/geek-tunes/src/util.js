@@ -9,10 +9,16 @@ const napster = axios.create({
 });
 
 const getAlbumImage = albumId => {
+  if(albumId === undefined) {
+    return "";
+  }
   return `https://api.napster.com/imageserver/v2/albums/${albumId}/images/500x500.jpg`;
 } 
 
 const getArtistImage = artistId => {
+  if(artistId === undefined) {
+    return "";
+  }
   return `https://api.napster.com/imageserver/v2/artists/${artistId}/images/150x100.jpg`;
 }
 
